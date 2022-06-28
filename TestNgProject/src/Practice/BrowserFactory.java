@@ -1,5 +1,7 @@
 package Practice;
 
+import static org.testng.Assert.assertEquals;
+
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -15,9 +17,13 @@ public class BrowserFactory {
 		
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		driver.get(url);
 		driver.manage().window().maximize();	
+		String a=driver.getTitle();
+		String b="Facebook – log in or sign up";
+		assertEquals(a, b);
+		
 		
 		return driver;
 	}
